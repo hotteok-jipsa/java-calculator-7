@@ -30,6 +30,7 @@ public class Tokens {
 
     private List<Integer> getNumberTokens(List<String> tokens) {
         return tokens.stream()
+                .filter(token -> !token.isBlank())
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }

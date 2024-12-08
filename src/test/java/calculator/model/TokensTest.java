@@ -18,7 +18,7 @@ public class TokensTest {
 
     @Test
     void 구분된_문자들을_숫자로_변환한다() {
-        Tokens tokens = new Tokens(List.of("5", "2", "45"));
+        Tokens tokens = new Tokens(List.of("5", "2", "45", ""));
         assertThat(tokens.getTokens()).containsOnly(5, 2, 45);
     }
 }
