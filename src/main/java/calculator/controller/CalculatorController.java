@@ -46,7 +46,7 @@ public class CalculatorController {
         }
         String customDelimiter = customDelimiterProcessor.extractCustomDelimiter(input);
         delimiters.addCustomDelimiter(customDelimiter);
-        return input.substring(6, input.length() - 1);
+        return input.substring(5, input.length());
     }
 
 }
