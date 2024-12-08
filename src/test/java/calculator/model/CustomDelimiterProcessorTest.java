@@ -1,6 +1,8 @@
 package calculator.model;
 
+import static calculator.ExceptionMessage.CUSTOM_DELIMITER_NUMBER_EXCEPTION;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,5 +34,12 @@ public class CustomDelimiterProcessorTest {
     void 커스텀_구분자를_추출한다() {
         assertThat(customDelimiterProcessor.extractCustomDelimiter("//@\\n5:2")).isEqualTo("@");
         assertThat(customDelimiterProcessor.extractCustomDelimiter("//%\\n")).isEqualTo("%");
+    }
+
+    @Test
+    void 추출한_커스텀_구분자가_숫자라면_예외를_발생시킨다() {
+        assertThatThrownBy(() -> customDelimiterProcessor.extractCustomDelimiter("//2\n5:2"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(CUSTOM_DELIMITER_NUMBER_EXCEPTION.message);
     }
 }
