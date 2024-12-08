@@ -41,7 +41,7 @@ public class CalculatorController {
     }
 
     private String setCustomDelimiter(String input, Delimiters delimiters) {
-        if (customDelimiterProcessor.specifyCustomDelimiter(input)) {
+        if (!customDelimiterProcessor.specifyCustomDelimiter(input)) {
             return input;
         }
         String customDelimiter = customDelimiterProcessor.extractCustomDelimiter(input);
