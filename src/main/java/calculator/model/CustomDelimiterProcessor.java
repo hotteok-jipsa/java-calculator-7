@@ -9,4 +9,10 @@ public class CustomDelimiterProcessor {
         String specifyString = input.substring(0, 5);
         return specifyString.startsWith("//") && specifyString.endsWith("\\n");
     }
+
+    public String extractCustomDelimiter(String input) {
+        String customDelimiterForm = input.substring(0, 5);
+        String customDelimiter = String.valueOf(customDelimiterForm.charAt(2));
+        return customDelimiter;
+    }
 }

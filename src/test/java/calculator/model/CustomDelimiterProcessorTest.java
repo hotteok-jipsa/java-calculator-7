@@ -3,6 +3,7 @@ package calculator.model;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -25,5 +26,11 @@ public class CustomDelimiterProcessorTest {
     @ValueSource(strings = {"//!!\\n", "5:2", "5:2,3"})
     void 커스텀_구분자를_지정하지_않는다면_거짓을_반환한다(String input) {
         assertThat(customDelimiterProcessor.specifyCustomDelimiter(input)).isFalse();
+    }
+
+    @Test
+    void 커스텀_구분자를_추출한다() {
+        assertThat(customDelimiterProcessor.extractCustomDelimiter("//@\\n5:2")).isEqualTo("@");
+        assertThat(customDelimiterProcessor.extractCustomDelimiter("//%\\n")).isEqualTo("%");
     }
 }
