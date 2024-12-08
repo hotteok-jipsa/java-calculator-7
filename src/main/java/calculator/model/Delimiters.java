@@ -7,10 +7,7 @@ public class Delimiters {
 
     private final List<String> delimiters = new ArrayList<>(List.of(":", ","));
 
-    public Delimiters() {
-    }
-
-    public Delimiters(String customDelimiter) {
+    public void addCustomDelimiter(String customDelimiter) {
         delimiters.add(customDelimiter);
     }
 

@@ -8,7 +8,8 @@ public class DelimitersTest {
 
     @Test
     void 계산식을_구분자를_기준으로_구분한다() {
-        Delimiters delimiters = new Delimiters("#");
+        Delimiters delimiters = new Delimiters();
+        delimiters.addCustomDelimiter("#");
         assertThat(delimiters.splitByDelimiters("5,3:2#5,,##"))
                 .containsOnly("5", "3", "2", "5");
     }
