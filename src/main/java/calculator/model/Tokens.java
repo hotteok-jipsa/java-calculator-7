@@ -3,7 +3,9 @@ package calculator.model;
 import static calculator.ExceptionMessage.TOKEN_NOT_NUMBER_EXCEPTION;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Tokens {
 
@@ -11,6 +13,11 @@ public class Tokens {
 
     public Tokens(List<String> tokens) {
         validateTokens(tokens);
+        this.tokens = getNumberTokens(tokens);
+    }
+
+    public List<Integer> getTokens() {
+        return Collections.unmodifiableList(tokens);
     }
 
     private void validateTokens(List<String> tokens) {
@@ -19,6 +26,12 @@ public class Tokens {
                 throw new IllegalArgumentException(TOKEN_NOT_NUMBER_EXCEPTION.message);
             }
         }
+    }
+
+    private List<Integer> getNumberTokens(List<String> tokens) {
+        return tokens.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
 }
